@@ -23,11 +23,13 @@ end
 
 function Renderer.new(Parent, COLOR, DPI, SCALE, DENSITY, SHIFT_FACTOR)
 	local self = {}
+	self.Parent = Parent
+	self.COLOR = COLOR or {r=255,g=0,b=0}
 	self.DPI = DPI or 10 --how many pixels (more = further/zoom, also more color space)
 	self.SCALE = SCALE or 30
 	self.DENSITY = DENSITY or .1 --how much detail
 	self.SHIFT_FACTOR = SHIFT_FACTOR or 5 --the size of 3D (can be dangerous depending on DPI,)
-	self.COLOR_LERP = SCALE/(DPI-SHIFT_FACTOR/2) --(lower = starts off darker)
+	self.COLOR_LERP = self.SCALE/(self.DPI-self.SHIFT_FACTOR/2) --(lower = starts off darker)
 	return setmetatable(self, Renderer)
 end
 

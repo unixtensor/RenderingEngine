@@ -35,10 +35,11 @@ local function ReColor()
 end
 
 _3D_Render.MouseButton1Click:Connect(function()
-	local Screen = Render(Screen.void, Color)
-	Frames = Screen.Frames
-	Cal = Screen.Cal
-	COLOR_LERP = Screen.COLOR_LERP
+	local Screen = Render.new(Screen.void, Color)
+	local Object = Screen:Cube()
+	Frames = Object.Frames
+	Cal = Object.Cal
+	COLOR_LERP = Object.COLOR_LERP
 end)
 ColorField.FocusLost:Connect(function()
 	local s = ColorField.Text:split(",")
